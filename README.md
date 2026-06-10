@@ -9,7 +9,13 @@ GitHub Pages로 배포하는 정적 홍보 홈페이지입니다.
 - 상호가 다르면 `한진 건설현장 용역` 문구 변경
 - 상담지역이 다르면 `수도권 및 인근 현장` 문구 변경
 
-## GitHub Pages
+## GitHub Pages 설정
 
-이 저장소는 `.github/workflows/pages.yml`로 GitHub Pages 배포를 실행합니다.
-GitHub 저장소의 `Settings > Pages`에서 배포 소스를 `GitHub Actions`로 설정하면 됩니다.
+GitHub 저장소에서 아래처럼 설정하면 됩니다.
+
+1. `Settings > Pages`로 이동
+2. `Build and deployment`의 `Source`를 `Deploy from a branch`로 선택
+3. `Branch`를 `main`, 폴더를 `/ (root)`로 선택
+4. `Save` 클릭
+
+설정 후 보통 몇 분 안에 `https://majitap.github.io/hanjin/` 주소로 접속됩니다.
