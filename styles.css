@@ -188,6 +188,12 @@ svg {
   text-transform: uppercase;
 }
 
+.hero .eyebrow {
+  margin-bottom: 1rem;
+  font-size: 1.72rem;
+  line-height: 1.2;
+}
+
 h1,
 h2,
 h3,
@@ -197,9 +203,17 @@ p {
 
 h1 {
   max-width: 9em;
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.2rem;
   font-size: 4.8rem;
   line-height: 1.02;
+}
+
+.hero-subtitle {
+  margin-bottom: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 3.6rem;
+  font-weight: 900;
+  line-height: 1.08;
 }
 
 .hero-copy {
@@ -418,6 +432,23 @@ h1 {
   font-size: 1.16rem;
 }
 
+.map-link-badge {
+  width: fit-content;
+  margin-top: 0.25rem;
+  padding: 0.28rem 0.52rem;
+  color: var(--white);
+  background: var(--field);
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+a.contact-line:hover .map-link-badge,
+a.contact-line:focus-visible .map-link-badge {
+  background: var(--steel);
+}
+
 .site-footer {
   display: flex;
   flex-wrap: wrap;
@@ -436,6 +467,10 @@ h1 {
 
   h1 {
     font-size: 3.4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 2.55rem;
   }
 
   .service-grid {
@@ -503,6 +538,14 @@ h1 {
 
   h1 {
     font-size: 2.7rem;
+  }
+
+  .hero .eyebrow {
+    font-size: 1.35rem;
+  }
+
+  .hero-subtitle {
+    font-size: 2.05rem;
   }
 
   .hero-copy {
