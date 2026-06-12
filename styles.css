@@ -553,7 +553,8 @@ a.contact-line:focus-visible .map-link-badge {
   }
 
   h1 {
-    font-size: 3.3rem;
+    font-size: 4.2rem;
+    line-height: 0.98;
   }
 
   .hero .eyebrow {
