@@ -105,7 +105,7 @@ svg {
   justify-content: center;
   gap: 1.6rem;
   color: rgba(255, 255, 255, 0.86);
-  font-size: 0.96rem;
+  font-size: 0.9rem;
 }
 
 .site-nav a {
@@ -190,7 +190,7 @@ svg {
 
 .hero .eyebrow {
   margin-bottom: 1rem;
-  font-size: 1.72rem;
+  font-size: 1.05rem;
   line-height: 1.2;
 }
 
@@ -204,14 +204,14 @@ p {
 h1 {
   max-width: 9em;
   margin-bottom: 0.2rem;
-  font-size: 4.8rem;
+  font-size: 3.4rem;
   line-height: 1.02;
 }
 
 .hero-subtitle {
   margin-bottom: 1.2rem;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 3.6rem;
+  font-size: 2.25rem;
   font-weight: 900;
   line-height: 1.08;
 }
@@ -466,11 +466,11 @@ a.contact-line:focus-visible .map-link-badge {
   }
 
   h1 {
-    font-size: 3.4rem;
+    font-size: 2.8rem;
   }
 
   .hero-subtitle {
-    font-size: 2.55rem;
+    font-size: 2rem;
   }
 
   .service-grid {
@@ -537,15 +537,15 @@ a.contact-line:focus-visible .map-link-badge {
   }
 
   h1 {
-    font-size: 2.7rem;
+    font-size: 2.2rem;
   }
 
   .hero .eyebrow {
-    font-size: 1.35rem;
+    font-size: 1rem;
   }
 
   .hero-subtitle {
-    font-size: 2.05rem;
+    font-size: 1.55rem;
   }
 
   .hero-copy {
