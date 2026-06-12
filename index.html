@@ -31,7 +31,7 @@
       <nav class="site-nav" aria-label="주요 메뉴">
         <a href="#services">업무분야</a>
         <a href="#process">진행방식</a>
-        <a href="mailto:daebaq54@naver.com">문의하기</a>
+        <a href="mailto:daebaq54@naver.com" data-mobile-target="#contact">문의하기</a>
       </nav>
 
       <a class="header-call" href="tel:053-558-8338" aria-label="전화 문의">
@@ -215,5 +215,19 @@
       <span>한진개발</span>
       <span>대구 직업 소개소·건설 현장 전문 인력 개발</span>
     </footer>
+    <script>
+      document.querySelectorAll("[data-mobile-target]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          if (!window.matchMedia("(max-width: 640px)").matches) return;
+
+          const target = document.querySelector(link.dataset.mobileTarget);
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.replaceState(null, "", link.dataset.mobileTarget);
+        });
+      });
+    </script>
   </body>
 </html>
