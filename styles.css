@@ -158,8 +158,21 @@ svg {
 }
 
 .hero-image {
+  animation: heroDrift 24s ease-in-out infinite alternate;
   object-fit: cover;
   object-position: center;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes heroDrift {
+  from {
+    transform: scale(1.03) translate3d(-0.8%, -0.4%, 0);
+  }
+
+  to {
+    transform: scale(1.1) translate3d(1.1%, 0.6%, 0);
+  }
 }
 
 .hero-shade {
@@ -601,5 +614,12 @@ a.contact-line:focus-visible .map-link-badge {
 
   .site-footer {
     padding: 1.2rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image {
+    animation: none;
+    transform: none;
   }
 }
