@@ -465,8 +465,12 @@ a.contact-line:focus-visible .map-link-badge {
 @media (max-width: 980px) {
   .site-header {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
     row-gap: 0.45rem;
+  }
+
+  .header-call {
+    display: none;
   }
 
   .site-nav {
@@ -535,10 +539,6 @@ a.contact-line:focus-visible .map-link-badge {
   }
 
   .brand small {
-    display: none;
-  }
-
-  .header-call {
     display: none;
   }
 
