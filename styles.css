@@ -205,17 +205,9 @@ p {
 
 h1 {
   max-width: 9em;
-  margin-bottom: 0.2rem;
-  font-size: 3.4rem;
-  line-height: 1.02;
-}
-
-.hero-subtitle {
   margin-bottom: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 2.25rem;
-  font-weight: 900;
-  line-height: 1.08;
+  font-size: 5.1rem;
+  line-height: 1.02;
 }
 
 .hero-copy {
@@ -497,11 +489,7 @@ a.contact-line:focus-visible .map-link-badge {
   }
 
   h1 {
-    font-size: 2.8rem;
-  }
-
-  .hero-subtitle {
-    font-size: 2rem;
+    font-size: 4.2rem;
   }
 
   .service-grid {
@@ -565,15 +553,11 @@ a.contact-line:focus-visible .map-link-badge {
   }
 
   h1 {
-    font-size: 2.2rem;
+    font-size: 3.3rem;
   }
 
   .hero .eyebrow {
     font-size: 2rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.55rem;
   }
 
   .hero-copy {
