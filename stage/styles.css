@@ -56,6 +56,7 @@ body.menu-open .site-header{background:var(--green-deep);color:#fff;box-shadow:n
 .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,18,.55) 0%,rgba(10,22,18,.2) 40%,rgba(10,22,18,.7) 100%)}
 .hero-content{position:absolute;left:0;right:0;bottom:22%;width:min(1200px,calc(100% - 96px));margin-inline:auto;animation:rise 1.2s .2s both}
 .hero-eyebrow{font-size:15px;letter-spacing:.04em;font-weight:500;opacity:.85}
+.mobile-break{display:none}
 .hero h1{margin-top:20px;font-size:clamp(38px,6vw,84px);line-height:1.18;letter-spacing:-.05em;font-weight:300}
 .hero h1 strong{font-weight:800}
 .hero-description{margin-top:22px;font-size:clamp(16px,1.5vw,20px);opacity:.9}
@@ -209,6 +210,7 @@ fieldset.field{border:0;padding:0;min-width:0}
   .dialog-intro{margin-bottom:24px}
 }
 @media (max-width:560px){
+  .mobile-break{display:inline}
   .service-grid,.process-steps{grid-template-columns:1fr}
   .service-card{min-height:auto;padding:30px 24px}
   .service-card strong{margin-top:8px}
