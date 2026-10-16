@@ -1,6 +1,7 @@
 # 한진개발 홈페이지
 
 운영 주소: https://majitap.github.io/hanjin/
+스테이지(리디자인 시안): https://majitap.github.io/hanjin/stage/
 
 대구 및 인근 건설 현장의 인력 공급을 안내하는 반응형 정적 사이트입니다.
 GitHub Pages에서 `main` 브랜치의 저장소 루트(`/`)를 배포합니다.
@@ -14,6 +15,8 @@ GitHub Pages에서 `main` 브랜치의 저장소 루트(`/`)를 배포합니다.
 - `email.js`: Web3Forms 전송, 응답 확인과 오류 안내
 - `assets/`: 로고와 현장 이미지
 - `.nojekyll`: 정적 파일 직접 배포
+- `stage/`: 배경 영상과 간결한 메뉴로 새로 만든 리디자인 시안. 문의 전송은 루트의 `email.js`를 함께 사용합니다.
+  배경 영상 `stage/assets/hero.mp4`는 Pexels 무료 라이선스 영상입니다 (Site Engine, https://www.pexels.com/video/5567026/).
 
 ## 문의 메일
 
