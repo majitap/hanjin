@@ -16,7 +16,8 @@ GitHub Pages에서 `main` 브랜치의 저장소 루트(`/`)를 배포합니다.
 - `assets/`: 로고와 현장 이미지
 - `.nojekyll`: 정적 파일 직접 배포
 - `stage/`: 배경 영상과 간결한 메뉴로 새로 만든 리디자인 시안. 문의 전송은 루트의 `email.js`를 함께 사용합니다.
-  배경 영상 `stage/assets/hero.mp4`는 Pexels 무료 라이선스 영상입니다 (Site Engine, https://www.pexels.com/video/5567026/).
+  배경 영상 `stage/assets/hero.mp4`는 Pexels 무료 라이선스 영상입니다 (Sururi Ballıdağ, https://www.pexels.com/video/28823325/).
+  영상 왼쪽의 광고판이 보이지 않도록 넓은 화면에서는 오른쪽 기준으로 확대해 잘라 보여줍니다. `hero-poster.jpg`는 이 영상의 첫 장면입니다.
 
 ## 문의 메일
 
