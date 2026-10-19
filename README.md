@@ -1,7 +1,7 @@
 # 한진개발 홈페이지
 
 운영 주소: https://majitap.github.io/hanjin/
-스테이지(리디자인 시안): https://majitap.github.io/hanjin/stage/
+스테이지(시안 확인용): https://majitap.github.io/hanjin/stage/
 
 대구 및 인근 건설 현장의 인력 공급을 안내하는 반응형 정적 사이트입니다.
 GitHub Pages에서 `main` 브랜치의 저장소 루트(`/`)를 배포합니다.
@@ -9,15 +9,17 @@ GitHub Pages에서 `main` 브랜치의 저장소 루트(`/`)를 배포합니다.
 
 ## 파일
 
-- `index.html`: 홈페이지, 문의 폼, 운영 주소 메타데이터
-- `styles.css`: PC·모바일 화면과 글자 크기
-- `script.js`: 메뉴, 문의 창, 입력 검증, 문의 전송과 내용 복사
+- `index.html`: 배경 영상 첫 화면, 회사소개·인력공급·진행절차·문의 섹션, 문의 창, 운영 주소 메타데이터
+- `styles.css`: PC·모바일 화면, 상단 메뉴, 문의 창
+- `script.js`: 상단 메뉴 전환, 배경 영상 정지/재생, 스크롤 표시, 문의 창, 입력 검증, 문의 전송과 내용 복사
 - `email.js`: Web3Forms 전송, 응답 확인과 오류 안내
-- `assets/`: 로고와 현장 이미지
+- `assets/`: 로고, 배경 영상과 포스터, 문의 창 사진
+  - `hero.mp4`: Pexels 무료 라이선스 영상 (Sururi Ballıdağ, https://www.pexels.com/video/28823325/)
+    영상 왼쪽의 광고판이 보이지 않도록 넓은 화면에서는 오른쪽 기준으로 확대해 잘라 보여줍니다.
+  - `hero-poster.jpg`: 영상이 로딩되기 전에 보이는 첫 장면
 - `.nojekyll`: 정적 파일 직접 배포
-- `stage/`: 배경 영상과 간결한 메뉴로 새로 만든 리디자인 시안. 문의 전송은 루트의 `email.js`를 함께 사용합니다.
-  배경 영상 `stage/assets/hero.mp4`는 Pexels 무료 라이선스 영상입니다 (Sururi Ballıdağ, https://www.pexels.com/video/28823325/).
-  영상 왼쪽의 광고판이 보이지 않도록 넓은 화면에서는 오른쪽 기준으로 확대해 잘라 보여줍니다. `hero-poster.jpg`는 이 영상의 첫 장면입니다.
+- `stage/`: 운영 반영 전에 시안을 확인하는 사본입니다. 검색 노출을 막고(`noindex`), 문의 전송은 루트의 `email.js`를 함께 사용합니다.
+  운영에 반영할 때는 `stage/`의 HTML·CSS·JS를 루트로 옮기면서 `../` 경로와 `noindex`, `og:url`을 운영 기준으로 바꿉니다.
 
 ## 문의 메일
 

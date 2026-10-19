@@ -1,17 +1,30 @@
 'use strict';
 
+document.documentElement.classList.add('js');
+
+const header = document.querySelector('.site-header');
+const hero = document.querySelector('.hero');
+function updateHeader() {
+  header.classList.toggle('is-solid', window.scrollY >= hero.offsetHeight - header.offsetHeight - 1);
+}
+updateHeader();
+window.addEventListener('scroll', updateHeader, { passive: true });
+window.addEventListener('resize', updateHeader);
+
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNav = document.querySelector('#mobile-nav');
 function closeMenu() {
   menuToggle.setAttribute('aria-expanded', 'false');
   menuToggle.setAttribute('aria-label', '메뉴 열기');
   mobileNav.hidden = true;
+  document.body.classList.remove('menu-open');
 }
 menuToggle.addEventListener('click', () => {
   const open = menuToggle.getAttribute('aria-expanded') !== 'true';
   menuToggle.setAttribute('aria-expanded', String(open));
   menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
   mobileNav.hidden = !open;
+  document.body.classList.toggle('menu-open', open);
 });
 mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 document.addEventListener('keydown', event => {
@@ -20,9 +33,45 @@ document.addEventListener('keydown', event => {
     menuToggle.focus();
   }
 });
-window.matchMedia('(min-width: 901px)').addEventListener('change', event => {
+window.matchMedia('(min-width: 861px)').addEventListener('change', event => {
   if (event.matches) closeMenu();
 });
+
+// Background video keeps playing for everyone; the toggle lets visitors pause it.
+const video = document.querySelector('.hero-video');
+const videoToggle = document.querySelector('.video-toggle');
+function setVideoState(playing) {
+  videoToggle.setAttribute('aria-label', playing ? '배경 영상 일시정지' : '배경 영상 재생');
+  videoToggle.querySelector('use').setAttribute('href', playing ? '#pause' : '#play');
+}
+video.addEventListener('play', () => setVideoState(true));
+video.addEventListener('pause', () => setVideoState(false));
+videoToggle.addEventListener('click', () => {
+  if (video.paused) video.play();
+  else video.pause();
+});
+
+// Highlight the menu item of the section in view and reveal sections on scroll.
+const navLinks = [...document.querySelectorAll('.main-nav a')];
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    navLinks.forEach(link => {
+      if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+['about', 'services', 'process', 'contact', 'top'].forEach(id => sectionObserver.observe(document.getElementById(id)));
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('is-visible');
+    revealObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
 
 const dialog = document.querySelector('#inquiry-dialog');
 const form = document.querySelector('#inquiry-form');
