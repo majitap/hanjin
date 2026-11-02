@@ -51,7 +51,7 @@ videoToggle.addEventListener('click', () => {
   else video.pause();
 });
 
-// Highlight the menu item of the section in view and reveal sections on scroll.
+// Highlight the menu item of the section in view.
 const navLinks = [...document.querySelectorAll('.main-nav a')];
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -63,15 +63,6 @@ const sectionObserver = new IntersectionObserver(entries => {
   });
 }, { rootMargin: '-45% 0px -50% 0px' });
 ['about', 'services', 'process', 'contact', 'top'].forEach(id => sectionObserver.observe(document.getElementById(id)));
-
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('is-visible');
-    revealObserver.unobserve(entry.target);
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
 
 const dialog = document.querySelector('#inquiry-dialog');
 const form = document.querySelector('#inquiry-form');
