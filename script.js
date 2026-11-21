@@ -3,9 +3,8 @@
 document.documentElement.classList.add('js');
 
 const header = document.querySelector('.site-header');
-const hero = document.querySelector('.hero');
 function updateHeader() {
-  header.classList.toggle('is-solid', window.scrollY >= hero.offsetHeight - header.offsetHeight - 1);
+  header.classList.toggle('is-solid', window.scrollY > 40);
 }
 updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
@@ -37,19 +36,64 @@ window.matchMedia('(min-width: 861px)').addEventListener('change', event => {
   if (event.matches) closeMenu();
 });
 
-// Background video keeps playing for everyone; the toggle lets visitors pause it.
-const video = document.querySelector('.hero-video');
+// Control all background construction videos with the pause/play toggle
+const siteVideos = [...document.querySelectorAll('.site-video')];
+const heroVideo = document.querySelector('.hero-video');
 const videoToggle = document.querySelector('.video-toggle');
+let userPaused = false;
+
 function setVideoState(playing) {
+  if (!videoToggle) return;
   videoToggle.setAttribute('aria-label', playing ? '배경 영상 일시정지' : '배경 영상 재생');
   videoToggle.querySelector('use').setAttribute('href', playing ? '#pause' : '#play');
 }
-video.addEventListener('play', () => setVideoState(true));
-video.addEventListener('pause', () => setVideoState(false));
-videoToggle.addEventListener('click', () => {
-  if (video.paused) video.play();
-  else video.pause();
-});
+
+if (heroVideo && videoToggle) {
+  heroVideo.addEventListener('play', () => setVideoState(true));
+  heroVideo.addEventListener('pause', () => setVideoState(false));
+  videoToggle.addEventListener('click', () => {
+    userPaused = !heroVideo.paused;
+    siteVideos.forEach(v => {
+      if (userPaused) v.pause();
+      else v.play().catch(() => {});
+    });
+  });
+}
+
+// Auto-play/pause videos in viewport for smooth performance
+const videoObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (userPaused) return;
+    if (entry.isIntersecting) entry.target.play().catch(() => {});
+    else entry.target.pause();
+  });
+}, { threshold: 0.15 });
+siteVideos.forEach(v => videoObserver.observe(v));
+
+// Scroll-reveal and stat counter animations
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('is-visible');
+    entry.target.querySelectorAll('[data-counter]').forEach(counter => {
+      if (counter.dataset.animated) return;
+      counter.dataset.animated = 'true';
+      const target = Number(counter.dataset.counter);
+      const suffix = counter.dataset.suffix || '';
+      const start = performance.now();
+      const duration = 1100;
+      function tick(now) {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = `${Math.round(target * eased)}${suffix}`;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+    revealObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // Highlight the menu item of the section in view.
 const navLinks = [...document.querySelectorAll('.main-nav a')];
@@ -62,7 +106,10 @@ const sectionObserver = new IntersectionObserver(entries => {
     });
   });
 }, { rootMargin: '-45% 0px -50% 0px' });
-['about', 'services', 'process', 'contact', 'top'].forEach(id => sectionObserver.observe(document.getElementById(id)));
+['about', 'services', 'process', 'contact', 'top'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sectionObserver.observe(el);
+});
 
 const dialog = document.querySelector('#inquiry-dialog');
 const form = document.querySelector('#inquiry-form');
